@@ -1,8 +1,17 @@
 {
   "name": "create-antd-modal",
   "description": "Create a one-time modal dialog dynamically without maintenance loading and visible.",
-  "keywords": ["antd", "modal", "javascript", "function", "dynamically", "dialog", "visible"," loading"],
-  "version": "1.0.1",
+  "keywords": [
+    "antd",
+    "modal",
+    "javascript",
+    "function",
+    "dynamically",
+    "dialog",
+    "visible",
+    " loading"
+  ],
+  "version": "1.0.2",
   "scripts": {
     "dev": "dumi dev",
     "docs:build": "dumi build",
