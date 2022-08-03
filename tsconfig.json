@@ -8,6 +8,10 @@
     "types": ["jest"],
     "strict": true,
     "skipLibCheck": true,
-    "declaration": true
+    "declaration": true,
+    "baseUrl": ".",
+    "paths": {
+      "create-antd-modal": ["src/index.ts"]
+    }
   }
 }
