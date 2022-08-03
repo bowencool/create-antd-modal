@@ -8,6 +8,7 @@ export default defineConfig({
   outputPath: 'docs-dist',
   mode: 'site',
   base: '/create-antd-modal/',
+  publicPath: '/create-antd-modal/',
   extraBabelPlugins: [
     [
       'import',
