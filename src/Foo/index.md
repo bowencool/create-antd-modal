@@ -4,9 +4,7 @@ nav:
   path: /components
 ---
 
-## Foo
-
-Demo:
+## Demo
 
 ```tsx
 import React from 'react';
