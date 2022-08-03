@@ -1,7 +1,7 @@
 {
   "name": "create-antd-modal",
   "description": "Create a one-time modal dialog dynamically without maintenance loading and visible.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "dev": "dumi dev",
     "docs:build": "dumi build",
@@ -29,8 +29,7 @@
       "prettier --parser=typescript --write"
     ]
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
