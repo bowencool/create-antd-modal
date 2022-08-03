@@ -1,9 +1,11 @@
 ---
 nav:
-  title: createModal
+  title: Components
   path: /components
 ---
 
-## Demo
+## Demos
+
+### Basic Usage
 
 <code src="./demos/basic.tsx"></code>
