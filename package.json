@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "create-antd-modal",
   "description": "Create a one-time modal dialog dynamically without maintenance loading and visible.",
   "version": "1.0.0",
