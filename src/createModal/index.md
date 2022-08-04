@@ -1,7 +1,9 @@
 ---
 nav:
-  title: Documents
+  name: Documents
   path: /documents
+group:
+  name: lkajjdkf
 ---
 
 ## Demos

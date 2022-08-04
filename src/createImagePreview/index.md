@@ -1,6 +1,9 @@
 ---
 nav:
+  name: Documents
   path: /documents
+group:
+  name: fds
 ---
 
 ## Demos

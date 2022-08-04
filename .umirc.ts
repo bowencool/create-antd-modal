@@ -9,6 +9,10 @@ export default defineConfig({
   mode: 'site',
   base: '/create-antd-modal/',
   publicPath: '/create-antd-modal/',
+  devServer: {
+    host: '127.0.0.1',
+    port: 3122,
+  },
   extraBabelPlugins: [
     [
       'import',
