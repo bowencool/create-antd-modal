@@ -186,11 +186,5 @@ export default function createModal<T>(params: CreateModalProps<T>) {
       <App<T> afterClose={destory} {...params} />,
       // </RootContainer>
     );
-    // reactRender(
-    //   // <RootContainer>
-    //   <App<T> afterClose={destory} {...params} />,
-    //   // </RootContainer>,
-    //   div,
-    // );
   });
 }
