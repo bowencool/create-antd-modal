@@ -1,6 +1,3 @@
-/**
- * title: With Form
- */
 import React from 'react';
 import { Button, Form, Input, message } from 'antd';
 import { createModal } from 'create-antd-modal';
@@ -8,7 +5,7 @@ import { someService } from './services';
 
 type LoginPaylod = { username: string; password: string };
 
-const Basic: React.FC = () => {
+const Demo: React.FC = () => {
   return (
     <Button
       onClick={() => {
@@ -53,4 +50,4 @@ const Basic: React.FC = () => {
   );
 };
 
-export default Basic;
+export default Demo;

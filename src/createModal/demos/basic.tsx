@@ -1,11 +1,8 @@
-/**
- * title: Basic
- */
 import React from 'react';
 import { Button } from 'antd';
 import { createModal } from 'create-antd-modal';
 
-const Basic: React.FC = () => {
+const Demo: React.FC = () => {
   return (
     <Button
       onClick={() => {
@@ -26,4 +23,4 @@ const Basic: React.FC = () => {
   );
 };
 
-export default Basic;
+export default Demo;

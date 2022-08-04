@@ -1,6 +1,3 @@
-/**
- * title: Custom Component
- */
 import React from 'react';
 import { Button, message } from 'antd';
 import { createModal } from 'create-antd-modal';
@@ -8,7 +5,7 @@ import UserSelect from './UserSelect';
 import type { User } from './UserSelect';
 import { someService } from './services';
 
-const Basic: React.FC = () => {
+const Demo: React.FC = () => {
   return (
     <Button
       onClick={() => {
@@ -37,4 +34,4 @@ const Basic: React.FC = () => {
   );
 };
 
-export default Basic;
+export default Demo;

@@ -1,19 +1,19 @@
 ---
 nav:
-  title: Components
-  path: /components
+  title: Documents
+  path: /documents
 ---
 
 ## Demos
 
 ### Basic Usage
 
-<code src="./demos/basic.tsx"></code>
+<code title="Basic" src="./demos/basic.tsx" />
 
 ### With Form
 
-<code src="./demos/with-form.tsx"></code>
+<code title="With Form" src="./demos/with-form.tsx" />
 
 ### Custom Component
 
-<code src="./demos/custom.tsx"></code>
+<code title="Custom Component" src="./demos/custom.tsx" />
