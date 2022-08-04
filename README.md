@@ -17,7 +17,10 @@ see [Website](https://bowencool.github.io/create-antd-modal/)
 ## Install
 
 ```
+# for react18
 npm i create-antd-modal
+# for react16 and react17:
+npm i create-antd-modal@react16
 ```
 
 Or

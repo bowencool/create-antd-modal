@@ -23,7 +23,7 @@ export type CreateModalProps<T> = Omit<
    * @description Same as content prop, but higher priority
    * @description.zh-CN 同 content ，优先级高于 content
    * */
-  render?: (formRef: React.MutableRefObject<FormLike<T> | undefined>) => ReactNode;
+  render?: (formRef: React.MutableRefObject<any /* todo: FormLike<T> */ | undefined>) => ReactNode;
   /**
    * @description "Ok" button events that return a Promise can delay closing. Parameter is the value passed by the content
    * @description.zh-CN “确认”按钮事件，返回 promise 可以延迟关闭。参数为弹窗内容传递的值
