@@ -31,6 +31,8 @@
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
+  "license": "MIT",
+  "homepage": "https://github.com/bowencool/create-antd-modal",
   "lint-staged": {
     "*.{js,jsx,less,md,json}": [
       "prettier --write"

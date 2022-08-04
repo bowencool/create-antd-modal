@@ -8,7 +8,7 @@ Create a one-time modal dialog dynamically without maintenance loading and visib
   <a href="https://www.npmjs.com/package/create-antd-modal"><img src="https://img.shields.io/npm/v/create-antd-modal.svg?style=flat-square" alt="npm version" /></a>
   <!-- <a href="https://www.npmjs.com/package/create-antd-modal"><img src="https://img.shields.io/npm/dt/create-antd-modal.svg?style=flat-square" alt="npm downloads" /></a> -->
   <a target="_blank" rel="noopener noreferrer" href="https://npmjs.org/package/create-antd-modal"><img src="https://img.shields.io/npm/dm/create-antd-modal.svg?style=flat" alt="NPM downloads"></a>
-  <!-- <img src="https://img.badgesize.io/https:/unpkg.com/create-antd-modal/umd/index.js?label=gzip%20size&amp;compression=gzip" alt="gzip size"> -->
+  <img src="https://img.badgesize.io/https:/unpkg.com/create-antd-modal/umd/index.js?label=gzip%20size&amp;compression=gzip" alt="gzip size">
   <img src="https://img.shields.io/github/license/bowencool/create-antd-modal" alt="GitHub">
   <a href="https://d.umijs.org/"><img src="https://img.shields.io/badge/docs%20by-dumi-blue" alt="dumi" /></a>
 </p>
