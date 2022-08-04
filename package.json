@@ -11,7 +11,7 @@
     "visible",
     " loading"
   ],
-  "version": "1.0.8",
+  "version": "0.1.0",
   "scripts": {
     "dev": "dumi dev",
     "docs:build": "dumi build",
@@ -48,8 +48,8 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@types/jest": "^27.5.2",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^16",
+    "@types/react-dom": "^16",
     "@umijs/fabric": "^2.12.2",
     "@umijs/test": "^3.5.32",
     "antd": "^4.22.3",
@@ -58,12 +58,12 @@
     "father": "^4.0.0-rc.8",
     "lint-staged": "^10.0.7",
     "prettier": "^2.7.1",
-    "react": "^18.2.0",
-    "react-dom": "^18",
+    "react": "^16.2.0",
+    "react-dom": "^16",
     "yorkie": "^2.0.0"
   },
   "peerDependencies": {
     "antd": "^4.22.3",
-    "react": "^18.0.0"
+    "react": "^16.8 || ^17"
   }
 }

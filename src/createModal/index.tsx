@@ -1,5 +1,5 @@
 import React, { isValidElement, Children, useEffect, useRef, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import { render as reactRender, unmountComponentAtNode } from 'react-dom';
 import type { ReactNode } from 'react';
 import type { ValidateFields } from 'rc-field-form/es/interface';
 import type { ModalProps } from 'antd';
@@ -172,25 +172,19 @@ export default function createModal<T>(params: CreateModalProps<T>) {
     const div = document.createElement('div');
     document.body.appendChild(div);
     div.setAttribute('role', 'Dynamically created modal');
-    const root = createRoot(div);
 
     function destory() {
       setTimeout(() => {
-        root.unmount();
+        unmountComponentAtNode(div);
         document.body.removeChild(div);
       });
       // console.log('destoryed modal');
     }
-    root.render(
+    reactRender(
       // <RootContainer>
       <App<T> afterClose={destory} {...params} />,
-      // </RootContainer>
+      // </RootContainer>,
+      div,
     );
-    // reactRender(
-    //   // <RootContainer>
-    //   <App<T> afterClose={destory} {...params} />,
-    //   // </RootContainer>,
-    //   div,
-    // );
   });
 }
