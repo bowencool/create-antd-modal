@@ -14,4 +14,13 @@ export default {
     },
     // ignores: ['demos/'],
   },
+  extraBabelPlugins: [
+    [
+      '@babel/plugin-transform-runtime',
+      {
+        corejs: 3,
+        version: '^7.15.3',
+      },
+    ],
+  ],
 };
