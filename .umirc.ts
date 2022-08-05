@@ -9,6 +9,8 @@ export default defineConfig({
   mode: 'site',
   base: '/create-antd-modal/',
   publicPath: '/create-antd-modal/',
+  ignoreMomentLocale: true,
+  mfsu: {},
   devServer: {
     host: '127.0.0.1',
     port: 3122,
@@ -30,5 +32,12 @@ export default defineConfig({
       skipNodeModules: true,
     },
   },
+  navs: [
+    null, // null 值代表保留约定式生成的导航，只做增量配置
+    {
+      title: 'GitHub',
+      path: 'https://github.com/bowencool/create-antd-modal',
+    },
+  ],
   // more config: https://d.umijs.org/config
 });

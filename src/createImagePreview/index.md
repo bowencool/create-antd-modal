@@ -1,10 +1,10 @@
 ---
 title: createImagePreview
+order: 2
 nav:
-  # title: Documents
   path: /documents
 group:
-  path: /documents
+  path: /documents/functions
 ---
 
 ## Demos
