@@ -9,6 +9,10 @@ export default defineConfig({
   mode: 'site',
   base: '/create-antd-modal/',
   publicPath: '/create-antd-modal/',
+  devServer: {
+    host: '127.0.0.1',
+    port: 3122,
+  },
   extraBabelPlugins: [
     [
       'import',
@@ -19,5 +23,12 @@ export default defineConfig({
       },
     ],
   ],
+  apiParser: {
+    // 自定义属性过滤配置，也可以是一个函数，用法参考：https://github.com/styleguidist/react-docgen-typescript/#propfilter
+    propFilter: {
+      // 是否忽略从 node_modules 继承的属性，默认值为 false
+      skipNodeModules: true,
+    },
+  },
   // more config: https://d.umijs.org/config
 });

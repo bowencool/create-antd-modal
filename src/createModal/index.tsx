@@ -15,8 +15,8 @@ export type CreateModalProps<T> = Omit<
   'onOk' | 'visible' | 'destroyOnClose' | 'confirmLoading'
 > & {
   /**
-   * @description An alias to `children` prop. The modal body content, usually a form, attempts to call its validateFields method when you click Ok button
-   * @description.zh-CN `children`的别名，弹窗内容，通常是一个表单，点击确认时会尝试调用其 validateFields 方法
+   * @description An alias to `children` prop. The modal body content, usually a form.
+   * @description.zh-CN `children`的别名，弹窗内容，通常是一个表单。
    * */
   content?: ReactNode /* | Component | FunctionComponent | ExoticComponent */;
   /**
