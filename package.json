@@ -11,7 +11,7 @@
     "visible",
     "loading"
   ],
-  "version": "0.2.0",
+  "version": "0.2.1",
   "scripts": {
     "dev": "dumi dev",
     "docs:build": "dumi build",
