@@ -1,9 +1,10 @@
 ---
+title: createImagePreview
 nav:
-  name: Documents
+  # title: Documents
   path: /documents
 group:
-  name: fds
+  path: /documents
 ---
 
 ## Demos
