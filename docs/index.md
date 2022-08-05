@@ -4,7 +4,7 @@ hero:
   desc: Create a one-time modal dialog dynamically without maintenance loading and visible.
   actions:
     - text: Getting Started
-      link: /documents/create-modal
+      link: /documents
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
     title: Flexible

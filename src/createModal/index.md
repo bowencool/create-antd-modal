@@ -1,10 +1,12 @@
 ---
 title: createModal
+order: 1
 nav:
   title: Documents
   path: /documents
 group:
-  path: /documents
+  title: Functions
+  path: /documents/functions
 ---
 
 ## Demos
