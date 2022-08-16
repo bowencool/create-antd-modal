@@ -7,11 +7,13 @@ export interface User {
   age: number;
 }
 
-const UserSelect = forwardRef((_props: Record<string, any>, ref) => {
+type Inst = { validateFields: () => Promise<User[]> };
+
+const UserSelect = forwardRef<Inst>((props, ref) => {
   const [selected, setSelected] = useState<User[]>([]);
 
   useImperativeHandle(ref, () => ({
-    async validateFields(): Promise<User[]> {
+    async validateFields() {
       if (selected.length === 0) {
         throw new Error('One at least');
       } else if (selected.length > 2) {
