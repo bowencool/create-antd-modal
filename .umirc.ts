@@ -15,16 +15,6 @@ export default defineConfig({
     host: '127.0.0.1',
     port: 3122,
   },
-  extraBabelPlugins: [
-    [
-      'import',
-      {
-        libraryName: 'antd',
-        libraryDirectory: 'es',
-        style: true,
-      },
-    ],
-  ],
   apiParser: {
     // 自定义属性过滤配置，也可以是一个函数，用法参考：https://github.com/styleguidist/react-docgen-typescript/#propfilter
     propFilter: {

@@ -152,7 +152,7 @@ function App<T>({
       //   ),
       // ]}
       destroyOnClose
-      visible={visible}
+      open={visible}
     >
       {renderPropChildren()}
     </Modal>
