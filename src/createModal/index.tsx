@@ -60,7 +60,7 @@ export type CreateModalReturn<T, R> = {
    * @description Results only when the modal is closed.
    * @description.zh-CN 弹窗关闭时才有的结果
    */
-  promise: Promise<R | undefined>;
+  promise: Promise<R>;
   destory: () => void;
 };
 
@@ -189,9 +189,8 @@ function App<T, R>({
 export default function createModal<T, R = void>(
   params: CreateModalProps<T, R>,
 ): CreateModalReturn<T, R> {
-  let _resolve: (value: R | PromiseLike<R | undefined> | undefined) => void,
-    _reject: (reason?: any) => void;
-  const defered = new Promise<R | undefined>((resolve, reject) => {
+  let _resolve: (value: R | PromiseLike<R>) => void, _reject: (reason?: any) => void;
+  const defered = new Promise<R>((resolve, reject) => {
     _reject = reject;
     _resolve = resolve;
   });
@@ -220,9 +219,8 @@ export default function createModal<T, R = void>(
         afterClose={destory}
         {...params}
         onOk={(values?: T) => {
-          const rawOnOk = params.onOk;
-          const Result = rawOnOk?.(values);
-          _resolve(Result);
+          const Result = params.onOk?.(values);
+          _resolve(Result || (values as R));
           return Result;
         }}
         // onFailed={async (error) => {

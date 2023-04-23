@@ -49,7 +49,7 @@ export type CreateModalReturn<T, R> = {
    * @description Results only when the modal is closed.
    * @description.zh-CN 弹窗关闭时才有的结果
    */
-  promise: Promise<R | undefined>;
+  promise: Promise<R>;
   destory: () => void;
 };
 ```
