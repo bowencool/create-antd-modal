@@ -31,4 +31,14 @@ group:
   desc="Custom Component is treated like a form."
 />
 
-<API>Everything else is the same as [Modal](https://ant.design/components/modal/#header).</API>
+<API>Everything else is the same as [Modal](https://ant.design/components/modal/#header).
+
+Returns:
+
+```ts
+{
+  destory(): void
+}
+```
+
+</API>

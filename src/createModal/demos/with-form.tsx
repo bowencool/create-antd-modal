@@ -9,7 +9,7 @@ const Demo: React.FC = () => {
   return (
     <Button
       onClick={() => {
-        createModal<LoginPaylod>({
+        const { destory } = createModal<LoginPaylod>({
           title: 'Login',
           maskClosable: false,
           // Same as render: formLikeRef => <Form ref={formLikeRef}>...</Form>
@@ -35,6 +35,7 @@ const Demo: React.FC = () => {
               >
                 <Input.Password />
               </Form.Item>
+              <Button onClick={() => destory()}>Destory</Button>
             </Form>
           ),
           async onOk(values) {

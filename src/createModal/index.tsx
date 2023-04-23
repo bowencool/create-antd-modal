@@ -1,5 +1,5 @@
 import React, { isValidElement, Children, useEffect, useRef, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import { Root, createRoot } from 'react-dom/client';
 import type { ReactNode } from 'react';
 import type { ValidateFields } from 'rc-field-form/es/interface';
 import type { ModalProps } from 'antd';
@@ -175,30 +175,35 @@ function App<T>({
 
 /**
  * @description Create a one-time modal dialog dynamically without maintenance loading and visible.
+ * @description.zh-CN 动态创建一次性的模态框，不需要维护 loading 和 visible。
  */
 export default function createModal<T>(params: CreateModalProps<T>) {
+  // return new Promise((resolve, reject) => {
+  const div = document.createElement('div');
+  div.setAttribute('role', 'Dynamically created modal');
+  document.body.appendChild(div);
+  let root: Root | null = null;
+
+  function destory() {
+    setTimeout(() => {
+      root?.unmount();
+      document.body.removeChild(div);
+    });
+    // console.log('destoryed modal');
+  }
   /**
    * https://github.com/ant-design/ant-design/issues/23623
    *
    * Sync render blocks React event. Let's make this async.
    */
   setTimeout(() => {
-    const div = document.createElement('div');
-    document.body.appendChild(div);
-    div.setAttribute('role', 'Dynamically created modal');
-    const root = createRoot(div);
-
-    function destory() {
-      setTimeout(() => {
-        root.unmount();
-        document.body.removeChild(div);
-      });
-      // console.log('destoryed modal');
-    }
+    root = createRoot(div);
     root.render(
       // <RootContainer>
       <App<T> afterClose={destory} {...params} />,
       // </RootContainer>
     );
   });
+  return { destory };
+  // });
 }
