@@ -1,10 +1,12 @@
 export default {
-  // more father 4 config: https://github.com/umijs/father-next/blob/master/docs/config.md
+  // more father 4 config: https://github.com/umijs/father/blob/master/docs/config.md
   esm: {
     ignores: ['**/*/demos/'],
+    transformer: 'swc',
   },
   cjs: {
     ignores: ['**/*/demos/'],
+    transformer: 'swc',
   },
   umd: {
     externals: {
@@ -14,13 +16,13 @@ export default {
     },
     // ignores: ['demos/'],
   },
-  extraBabelPlugins: [
-    [
-      '@babel/plugin-transform-runtime',
-      {
-        corejs: 3,
-        version: '^7.15.3',
-      },
-    ],
-  ],
+  // extraBabelPlugins: [
+  //   [
+  //     '@babel/plugin-transform-runtime',
+  //     {
+  //       corejs: 3,
+  //       version: '^7.15.3',
+  //     },
+  //   ],
+  // ],
 };
