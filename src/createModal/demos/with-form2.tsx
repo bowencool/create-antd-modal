@@ -8,8 +8,8 @@ type LoginPaylod = { username: string; password: string };
 const Demo: React.FC = () => {
   return (
     <Button
-      onClick={() => {
-        createModal<LoginPaylod>({
+      onClick={async () => {
+        const { destory, promise } = createModal<LoginPaylod, { someResult: boolean }>({
           title: 'Login',
           maskClosable: false,
           // Same as render: formLikeRef => <Form ref={formLikeRef}>...</Form>
@@ -35,14 +35,25 @@ const Demo: React.FC = () => {
               >
                 <Input.Password />
               </Form.Item>
+              <Button onClick={() => destory()}>Destory</Button>
             </Form>
           ),
           async onOk(values) {
             console.log(`Logging in with:`, values);
             await someService(values);
             message.success('Login successful');
+            return { someResult: false }; // this return value will be passed through to the returned promise
+          },
+          async onFailed(error: any) {
+            message.error(`Login failed: ${error.message}`);
           },
         });
+        try {
+          const values = await promise;
+          console.log('111', values);
+        } catch (error) {
+          console.log('222', error);
+        }
       }}
     >
       Login

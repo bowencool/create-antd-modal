@@ -13,7 +13,7 @@ type FormLike<T> = {
   validateFieldsReturnFormatValue?: ValidateFields<T>;
   [key: string]: any;
 };
-export type CreateModalProps<T> = Omit<
+export type CreateModalProps<T, R = undefined> = Omit<
   ModalProps,
   'onOk' | 'visible' | 'destroyOnClose' | 'confirmLoading'
 > & {
@@ -28,15 +28,15 @@ export type CreateModalProps<T> = Omit<
    * */
   render?: (formRef: React.MutableRefObject<any /* todo: FormLike<T> */ | undefined>) => ReactNode;
   /**
-   * @description "Ok" button events that return a Promise can delay closing. Parameter is the value passed by the content
-   * @description.zh-CN “确认”按钮事件，返回 promise 可以延迟关闭。参数为弹窗内容传递的值
+   * @description "Ok" button events that return a Promise can delay closing. Parameter is the value passed by the content, the return value will be passed to the final return Promise.
+   * @description.zh-CN “确认”按钮事件，返回 promise 可以延迟关闭。参数为弹窗内容传递的值，返回值会被传递给最终返回的 Promise。
    * */
-  onOk?: (values?: T) => Promise<void> | void;
+  onOk?: (values?: T) => Promise<R> | R | undefined;
   /**
-   * @description Callback for validation failure and onOk failure
-   * @description.zh-CN 验证失败和 onOk 失败的回调
+   * @description Callback for validation failure and onOk failure, will not cause the modal to close, and will not cause the final returned Promise to reject
+   * @description.zh-CN 验证失败和 onOk 失败的回调，不会导致弹窗关闭，也不会导致最终返回的 Promise reject
    * */
-  onFailed?: (error: unknown) => void;
+  onFailed?: (error: unknown) => any;
   /**
    * @description.zh-CN 隐藏“取消”按钮
    * */
@@ -55,7 +55,16 @@ export type CreateModalProps<T> = Omit<
   // onDeny?: (values?: T) => Promise<void> | void;
 };
 
-function App<T>({
+export type CreateModalReturn<T, R> = {
+  /**
+   * @description Results only when the modal is closed.
+   * @description.zh-CN 弹窗关闭时才有的结果
+   */
+  promise: Promise<R | undefined>;
+  destory: () => void;
+};
+
+function App<T, R>({
   content,
   children = content,
   render,
@@ -67,7 +76,7 @@ function App<T>({
   // hideCancel = false,
   // hideOk = false,
   ...rest
-}: CreateModalProps<T>) {
+}: CreateModalProps<T, R>) {
   const formLikeRef = useRef<FormLike<T>>();
   const [visible, setVisible] = useState(false);
   const { /* direction, */ getPrefixCls } = React.useContext(ConfigContext);
@@ -177,8 +186,15 @@ function App<T>({
  * @description Create a one-time modal dialog dynamically without maintenance loading and visible.
  * @description.zh-CN 动态创建一次性的模态框，不需要维护 loading 和 visible。
  */
-export default function createModal<T>(params: CreateModalProps<T>) {
-  // return new Promise((resolve, reject) => {
+export default function createModal<T, R = void>(
+  params: CreateModalProps<T, R>,
+): CreateModalReturn<T, R> {
+  let _resolve: (value: R | PromiseLike<R | undefined> | undefined) => void,
+    _reject: (reason?: any) => void;
+  const defered = new Promise<R | undefined>((resolve, reject) => {
+    _reject = reject;
+    _resolve = resolve;
+  });
   const div = document.createElement('div');
   div.setAttribute('role', 'Dynamically created modal');
   document.body.appendChild(div);
@@ -188,8 +204,8 @@ export default function createModal<T>(params: CreateModalProps<T>) {
     setTimeout(() => {
       root?.unmount();
       document.body.removeChild(div);
+      _reject('destory');
     });
-    // console.log('destoryed modal');
   }
   /**
    * https://github.com/ant-design/ant-design/issues/23623
@@ -200,10 +216,25 @@ export default function createModal<T>(params: CreateModalProps<T>) {
     root = createRoot(div);
     root.render(
       // <RootContainer>
-      <App<T> afterClose={destory} {...params} />,
+      <App<T, R>
+        afterClose={destory}
+        {...params}
+        onOk={(values?: T) => {
+          const rawOnOk = params.onOk;
+          const Result = rawOnOk?.(values);
+          _resolve(Result);
+          return Result;
+        }}
+        // onFailed={async (error) => {
+        //   reject(await params.onFailed?.(error));
+        // }}
+        onCancel={(e) => {
+          params.onCancel?.(e);
+          _reject('cancel');
+        }}
+      />,
       // </RootContainer>
     );
   });
-  return { destory };
-  // });
+  return { destory, promise: defered };
 }
