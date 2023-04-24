@@ -4,7 +4,6 @@ import type { ReactNode } from 'react';
 import type { ValidateFields } from 'rc-field-form/es/interface';
 import type { ModalProps } from 'antd';
 import { Modal } from 'antd';
-import { ConfigContext } from 'antd/es/config-provider';
 // import LocaleReceiver from 'antd/es/locale-provider/LocaleReceiver';
 // import { ModalLocale } from 'antd/es/modal/locale';
 
@@ -79,8 +78,8 @@ function App<T, R>({
 }: CreateModalProps<T, R>) {
   const formLikeRef = useRef<FormLike<T>>();
   const [visible, setVisible] = useState(false);
-  const { /* direction, */ getPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = getPrefixCls('modal');
+  // const { /* direction, */ getPrefixCls } = React.useContext(ConfigContext);
+  // const prefixCls = getPrefixCls('modal');
   // const rootPrefixCls = getPrefixCls();
 
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -146,7 +145,7 @@ function App<T, R>({
     // <LocaleReceiver componentName="Modal">
     //   {(contextLocale) => (
     <Modal
-      prefixCls={prefixCls}
+      // prefixCls={prefixCls}
       {...rest}
       // todo context value and locale
       // todo extra footer buttons
