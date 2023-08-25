@@ -39,6 +39,14 @@ group:
   desc="Custom Component is treated like a form."
 />
 
+### Custom Container
+
+<code
+  title="Custom Container"
+  src="./demos/context.tsx"
+  desc="Get Context through Custom Container"
+/>
+
 <API>Everything else is the same as [Modal](https://ant.design/components/modal/#header).
 
 Returns:

@@ -52,6 +52,11 @@ export type CreateModalProps<T, R = undefined> = Omit<
    * @description.zh-CN “拒绝”按钮（传入此字段才显示）事件，返回 promise 可以延迟关闭
    * */
   // onDeny?: (values?: T) => Promise<void> | void;
+  /**
+   * @description Container for Modal, usually various Context.Provider
+   * @description.zh-CN Modal 的容器，通常为各种 Context.Provider
+   */
+  container?: React.FC<React.PropsWithChildren>;
 };
 
 export type CreateModalReturn<T, R> = {
@@ -70,6 +75,7 @@ function App<T, R>({
   onOk,
   onCancel,
   onFailed,
+  container: Container,
   // onDeny,
   // denyText,
   // hideCancel = false,
@@ -141,7 +147,7 @@ function App<T, R>({
     });
   };
 
-  return (
+  const returnedElement = (
     // <LocaleReceiver componentName="Modal">
     //   {(contextLocale) => (
     <Modal
@@ -179,6 +185,7 @@ function App<T, R>({
     //   )}
     // </LocaleReceiver>
   );
+  return Container ? <Container>{returnedElement}</Container> : returnedElement;
 }
 
 /**
@@ -235,3 +242,7 @@ export default function createModal<T, R = void>(
   });
   return { destory, promise: defered };
 }
+
+// export function createFunction(render: (child: React)) {
+
+// }
