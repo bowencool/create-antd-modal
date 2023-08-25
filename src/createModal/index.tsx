@@ -53,10 +53,10 @@ export type CreateModalProps<T, R = undefined> = Omit<
    * */
   // onDeny?: (values?: T) => Promise<void> | void;
   /**
-   * @description Container for Modal, usually various Context.Provider
-   * @description.zh-CN Modal 的容器，通常为各种 Context.Provider
+   * @description Container for Modal, usually various Context.Provide. We strongly recommend using `createFunctionWithDefaultProps` to inject this param.
+   * @description.zh-CN Modal 的容器，通常为各种 Context.Provider，我们强烈推荐您使用 `createFunctionWithDefaultProps` 注入此参数。
    */
-  container?: React.FC<React.PropsWithChildren>;
+  // container?: React.FC<React.PropsWithChildren>;
 };
 
 export type CreateModalReturn<T, R> = {
@@ -75,7 +75,6 @@ function App<T, R>({
   onOk,
   onCancel,
   onFailed,
-  container: Container,
   // onDeny,
   // denyText,
   // hideCancel = false,
@@ -147,7 +146,7 @@ function App<T, R>({
     });
   };
 
-  const returnedElement = (
+  return (
     // <LocaleReceiver componentName="Modal">
     //   {(contextLocale) => (
     <Modal
@@ -185,7 +184,6 @@ function App<T, R>({
     //   )}
     // </LocaleReceiver>
   );
-  return Container ? <Container>{returnedElement}</Container> : returnedElement;
 }
 
 /**
@@ -214,13 +212,11 @@ export default function createModal<T, R = void>(
   }
   /**
    * https://github.com/ant-design/ant-design/issues/23623
-   *
    * Sync render blocks React event. Let's make this async.
    */
   setTimeout(() => {
     root = createRoot(div);
     root.render(
-      // <RootContainer>
       <App<T, R>
         afterClose={destory}
         {...params}
@@ -237,12 +233,13 @@ export default function createModal<T, R = void>(
           _reject('cancel');
         }}
       />,
-      // </RootContainer>
     );
   });
   return { destory, promise: defered };
 }
 
-// export function createFunction(render: (child: React)) {
-
-// }
+export function createFunctionWithDefaultProps<T, R = void>(defaultParams: CreateModalProps<T, R>) {
+  const newFunction: typeof createModal<T, R> = (params) =>
+    createModal<T, R>({ ...defaultParams, ...params });
+  return newFunction;
+}
