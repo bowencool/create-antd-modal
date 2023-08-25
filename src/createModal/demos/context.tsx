@@ -15,7 +15,7 @@ const Demo: React.FC = () => {
         });
       }}
     >
-      Custom Container
+      Context Providing
     </Button>
   );
 };

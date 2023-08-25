@@ -39,12 +39,11 @@ group:
   desc="Custom Component is treated like a form."
 />
 
-### Custom Container
+### Context Providing
 
 <code
-  title="Custom Container"
+  title="Context Providing"
   src="./demos/context.tsx"
-  desc="Get Context through Custom Container"
 />
 
 ### Default Props
