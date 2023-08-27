@@ -1,6 +1,6 @@
 {
   "name": "create-antd-modal",
-  "description": "Create a one-time modal dialog dynamically without maintenance loading and visible.",
+  "description": "Create a one-off modal dialog dynamically without maintenance loading and visible.",
   "keywords": [
     "antd",
     "modal",

@@ -187,7 +187,7 @@ function App<T, R>({
 }
 
 /**
- * @description Create a one-time modal dialog dynamically without maintenance loading and visible.
+ * @description Create a one-off modal dialog dynamically without maintenance loading and visible.
  * @description.zh-CN 动态创建一次性的模态框，不需要维护 loading 和 visible。
  */
 export default function createModal<T, R = void>(

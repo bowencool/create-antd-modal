@@ -1,7 +1,7 @@
 ---
 hero:
   title: create-antd-modal
-  desc: Create a one-time modal dialog dynamically without maintenance loading and visible.
+  desc: Create a one-off modal dialog dynamically without maintenance loading and visible.
   actions:
     - text: Getting Started
       link: /documents

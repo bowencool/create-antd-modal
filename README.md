@@ -1,6 +1,6 @@
 # create-antd-modal
 
-Create a one-time modal dialog dynamically without maintenance loading and visible.
+Create a one-off modal dialog dynamically without maintenance loading and visible.
 
 see [Website](https://bowencool.github.io/create-antd-modal/)
 
