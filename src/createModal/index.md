@@ -46,14 +46,6 @@ group:
   src="./demos/context.tsx"
 />
 
-### Default Props
-
-<code
-  title="Default Props"
-  src="./demos/default-props.tsx"
-  desc="You can fill some common props in advance to make your code clearer."
-/>
-
 Everything else is the same as [Modal](https://ant.design/components/modal/#header).
 
 ## API

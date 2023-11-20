@@ -8,6 +8,9 @@ const Demo: React.FC = () => {
     // optional default params
     maskClosable: false,
     okText: '提交',
+    maskStyle: {
+      opacity: 0.8,
+    },
   });
   return (
     <RootContainer>
