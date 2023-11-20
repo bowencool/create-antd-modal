@@ -55,7 +55,9 @@ export default function createModal<T, R = void>(
   });
   return { destory, promise: defered };
 }
-
+/**
+ * @deprecated use `useModalCreation` instead
+ */
 export function createFunctionWithDefaultProps<T, R = void>(defaultParams: CreateModalProps<T, R>) {
   const newFunction: typeof createModal<T, R> = (params) =>
     createModal<T, R>({ ...defaultParams, ...params });
