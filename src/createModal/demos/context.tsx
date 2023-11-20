@@ -4,7 +4,11 @@ import { useModalCreation } from 'create-antd-modal';
 import RootContainer from './RootContainer';
 
 const Demo: React.FC = () => {
-  const [contextHolder, createModal] = useModalCreation();
+  const [contextHolder, createModal] = useModalCreation({
+    // optional default params
+    maskClosable: false,
+    okText: '提交',
+  });
   return (
     <RootContainer>
       <Button

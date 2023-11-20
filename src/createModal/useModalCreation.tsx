@@ -22,7 +22,9 @@ const ElementsHolder = React.memo(
   }),
 );
 
-export function useModalCreation(): readonly [
+export function useModalCreation<P, Q = void>(
+  defaultProps?: Omit<CreateModalProps<P, Q>, 'children' | 'render'>,
+): readonly [
   contextHolder: React.ReactElement,
   createModal: <T, R = void>(params: CreateModalProps<T, R>) => CreateModalReturn<T, R>,
 ] {
@@ -55,6 +57,7 @@ export function useModalCreation(): readonly [
         <TmpComp<T, R>
           key={`modal-${uuid++}`}
           afterClose={destory}
+          {...defaultProps}
           {...params}
           onOk={(values?: T) => {
             const Result = params.onOk?.(values);

@@ -102,6 +102,12 @@ export declare type CreateModalReturn<T, R> = {
 export default function createModal<T, R = void>(
   params: CreateModalProps<T, R>,
 ): CreateModalReturn<T, R>;
+export declare function useModalCreation<P, Q = void>(
+  defaultProps?: Omit<CreateModalProps<P, Q>, 'children' | 'render'>,
+): readonly [
+  contextHolder: React.ReactElement,
+  createModal: <T, R = void>(params: CreateModalProps<T, R>) => CreateModalReturn<T, R>,
+];
 export declare function createFunctionWithDefaultProps<T, R = void>(
   defaultParams: CreateModalProps<T, R>,
 ): (params: CreateModalProps<T, R>) => CreateModalReturn<T, R>;
