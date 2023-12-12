@@ -7,11 +7,14 @@ const Demo: React.FC = () => {
     <Button
       onClick={() => {
         createImagePreview({
-          images: [
+          items: [
             'https://dummyimage.com/100x100/394FC4/FFF.png&text=1',
             'https://dummyimage.com/100x100/894FC4/FFF.png&text=2',
           ],
-          current: 1,
+          preview: {
+            current: 1, // default index of preview images
+            scaleStep: 0.1,
+          },
           onClose() {
             console.log('Close');
           },

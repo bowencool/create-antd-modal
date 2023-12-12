@@ -1,48 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import type { PreviewGroupPreview, GroupConsumerProps } from 'rc-image/lib/PreviewGroup';
 import { Image } from 'antd';
 
-export type CreateImagePreviewProps = {
-  /**
-   * @description image urls to preview
-   * @default []
-   */
-  images?: string[];
-  /**
-   * @description initial index to preview
-   * @default 0
-   */
-  current?: number;
+export type CreateImagePreviewProps = Omit<GroupConsumerProps, 'preview'> & {
+  preview?: Omit<PreviewGroupPreview, 'visible' | 'onVisibleChange' | 'onChange'>;
   /**
    * @description callback on close
    */
   onClose?: () => void;
+  /**
+   * @deprecated use `items` instead
+   * @description alias of `items` for compatibility
+   * @default []
+   */
+  images?: GroupConsumerProps['items'];
+  /**
+   * @deprecated use `preview.current` instead
+   * @description alias of `preview.current` for compatibility
+   * @default []
+   */
+  current?: PreviewGroupPreview['current'];
 };
 
-function App({ images = [], current = 0, onClose }: CreateImagePreviewProps) {
+function App({ preview, onClose, images, current: oldCurrent, ...rest }: CreateImagePreviewProps) {
   const [visible, setVisible] = useState(false);
+  const [current, setCurrent] = useState(preview?.current || oldCurrent || 0);
   useEffect(() => {
     setVisible(true);
   }, []);
   return (
-    <div style={{ display: 'none' }}>
-      <Image.PreviewGroup
-        preview={{
-          visible,
-          onVisibleChange: (vis) => {
-            setVisible(vis);
-            if (!vis) {
-              onClose?.();
-            }
-          },
-          current,
-        }}
-      >
-        {images?.filter(Boolean)?.map((img) => (
-          <Image key={img} src={img} />
-        ))}
-      </Image.PreviewGroup>
-    </div>
+    <Image.PreviewGroup
+      items={images}
+      {...rest}
+      preview={{
+        ...preview,
+        current,
+        onChange: setCurrent,
+        visible,
+        onVisibleChange: (vis) => {
+          setVisible(vis);
+          if (!vis) {
+            onClose?.();
+          }
+        },
+      }}
+    />
   );
 }
 
