@@ -6,6 +6,8 @@ interface ElementsHolderRef {
   patchElement: ReturnType<typeof usePatchElement>[1];
 }
 let uuid = 0;
+// avoid create multi modal when user click button too fast
+let throttleLock = false;
 
 const ElementsHolder = React.memo(
   React.forwardRef<ElementsHolderRef>((_props, ref) => {
@@ -36,6 +38,16 @@ export function useModalCreation<P, Q = void>(
      * @description.zh-CN 动态创建一次性的模态框，不需要维护 loading 和 visible。
      */
     function createModal<T, R = void>(params: CreateModalProps<T, R>): CreateModalReturn<T, R> {
+      if (throttleLock) {
+        return {
+          destory: () => {},
+          promise: Promise.reject('throttled'),
+        };
+      }
+      throttleLock = true;
+      setTimeout(() => {
+        throttleLock = false;
+      }, 500);
       let _resolve: (value: R | PromiseLike<R>) => void, _reject: (reason?: any) => void;
       const defered = new Promise<R>((resolve, reject) => {
         _reject = reject;

@@ -4,6 +4,7 @@ import { CreateModalProps, CreateModalReturn, TmpComp } from './component';
 // import LocaleReceiver from 'antd/es/locale-provider/LocaleReceiver';
 // import { ModalLocale } from 'antd/es/modal/locale';
 
+let throttleLock = false;
 /**
  * @description Create a one-off modal dialog dynamically without maintenance loading and visible.
  * @description.zh-CN 动态创建一次性的模态框，不需要维护 loading 和 visible。
@@ -11,6 +12,16 @@ import { CreateModalProps, CreateModalReturn, TmpComp } from './component';
 export default function createModal<T, R = void>(
   params: CreateModalProps<T, R>,
 ): CreateModalReturn<T, R> {
+  if (throttleLock) {
+    return {
+      destory: () => {},
+      promise: Promise.reject('throttled'),
+    };
+  }
+  throttleLock = true;
+  setTimeout(() => {
+    throttleLock = false;
+  }, 500);
   let _resolve: (value: R | PromiseLike<R>) => void, _reject: (reason?: any) => void;
   const defered = new Promise<R>((resolve, reject) => {
     _reject = reject;
